@@ -16,7 +16,6 @@ The SQL queries used for data exploration and analysis are available on my [GitH
 1. **Total Deaths by Country:**
 
 ```sql
-コードをコピーする
 SELECT location, SUM(new_deaths) AS total_deaths
 FROM covid_deaths
 GROUP BY location
@@ -25,7 +24,6 @@ ORDER BY total_deaths DESC;
 2. **Vaccination Rate by Country:**
 
 ```sql
-コードをコピーする
 SELECT location, MAX(total_vaccinations) AS total_vaccinations, MAX(population) AS population, 
        (MAX(total_vaccinations) / MAX(population)) * 100 AS vaccination_rate
 FROM covid_vaccinations
@@ -35,7 +33,6 @@ ORDER BY vaccination_rate DESC;
 3. **Monthly Deaths Trend:**
 
 ```sql
-コードをコピーする
 SELECT DATEPART(YEAR, date) AS year, DATEPART(MONTH, date) AS month, SUM(new_deaths) AS total_deaths
 FROM covid_deaths
 GROUP BY DATEPART(YEAR, date), DATEPART(MONTH, date)
