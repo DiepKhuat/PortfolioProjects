@@ -1,19 +1,19 @@
-# COVID-19 Data Exploration and Visualization
-## Project Overview
-This project aims to analyze COVID-19 data, specifically focusing on death and vaccination statistics worldwide. The data was sourced from [Our World in Data](https://ourworldindata.org/covid-deaths) and includes two datasets: COVID-19 Deaths and COVID-19 Vaccinations. The analysis was conducted using SQL Server, and the results were visualized using Tableau.
+# COVID-19データ探索と可視化
+## プロジェクト概要
+このプロジェクトは、COVID-19のデータ、特に全世界の死亡者数とワクチン接種統計に焦点を当てて分析することを目的としています。データは[Our World in Data](https://ourworldindata.org/covid-deaths) から取得し、2つのデータセット（COVID-19 DeathsおよびCOVID-19 Vaccinations）を使用しました。分析はSQL Serverを用いて行い、結果はTableauで可視化しました。
 
-## Data Sources
-- **COVID-19 Deaths:** [Download Link](https://ourworldindata.org/covid-deaths)
-- **COVID-19 Vaccinations:** [Download Link](https://ourworldindata.org/covid-deaths)
-## Tools and Technologies
-- **SQL Server:** For data analysis and querying.
-- **Tableau:** For data visualization.
-- **GitHub:** For storing SQL queries and sharing project documentation.
-## SQL Analysis
-The SQL queries used for data exploration and analysis are available on my [GitHub repository](https://github.com/DiepKhuat/PortfolioProjects/blob/main/COVID%20Portfolio%20Project%20-%20SQL%20Data%20Exploration.sql).
+## データソース
+- **COVID-19 Deaths:** [ダウンロードリンク](https://ourworldindata.org/covid-deaths)
+- **COVID-19 Vaccinations:** [ダウンロードリンク](https://ourworldindata.org/covid-deaths)
+## ツールと技術
+- **SQL Server:** データ分析とクエリ用
+- **Tableau:** データ可視化用
+- **GitHub:** SQLクエリの保存とプロジェクトドキュメントの共有用
+## SQL分析
+データ探索と分析に使用したSQLクエリは、私のGitHubリポジトリにあります。[GitHub repository](https://github.com/DiepKhuat/PortfolioProjects/blob/main/COVID%20Portfolio%20Project%20-%20SQL%20Data%20Exploration.sql).
 
-### Key SQL Queries
-1. **Total Deaths by Country:**
+### 主なSQLクエリ
+1. **国別の総死亡者数::**
 
 ```sql
 SELECT location, SUM(new_deaths) AS total_deaths
@@ -21,7 +21,7 @@ FROM covid_deaths
 GROUP BY location
 ORDER BY total_deaths DESC;
 ```
-2. **Vaccination Rate by Country:**
+2. **国別のワクチン接種率:**
 
 ```sql
 SELECT location, MAX(total_vaccinations) AS total_vaccinations, MAX(population) AS population, 
@@ -30,7 +30,7 @@ FROM covid_vaccinations
 GROUP BY location
 ORDER BY vaccination_rate DESC;
 ```
-3. **Monthly Deaths Trend:**
+3. **月別死亡者数の推移:**
 
 ```sql
 SELECT DATEPART(YEAR, date) AS year, DATEPART(MONTH, date) AS month, SUM(new_deaths) AS total_deaths
@@ -38,23 +38,23 @@ FROM covid_deaths
 GROUP BY DATEPART(YEAR, date), DATEPART(MONTH, date)
 ORDER BY year, month;
 ```
-## Data Visualization
-The visualizations created in Tableau include:
+## データ可視化
+Tableauで作成した可視化には以下が含まれます:
 
-- **Global Deaths and Vaccinations Overview:** A dashboard summarizing total deaths and vaccinations by country.
-- **Monthly Deaths Trend:** A line chart showing the trend of deaths over time.
-- **Vaccination Rate Comparison:** A bar chart comparing vaccination rates across countries.
-You can view the Tableau dashboard [here](https://public.tableau.com/app/profile/diep.khuat/viz/CovidDashboard_17192173893080/Dashboard1).
+- **世界の死亡者数とワクチン接種の概要:**  国別の総死亡者数とワクチン接種数を要約したダッシュボード
+- **月別死亡者数の推移:** 死亡者数の時間的推移を示す折れ線グラフ
+- **ワクチン接種率の比較:**  国別のワクチン接種率を比較する棒グラフ
+Tableauダッシュボードはこちらからご覧いただけます。 [here](https://public.tableau.com/app/profile/diep.khuat/viz/CovidDashboard_17192173893080/Dashboard1).
 
-### Findings
-1. **Total Deaths:** The countries with the highest total deaths are the United States, Brazil, and India.
-2. **Vaccination Rates:** Countries with the highest vaccination rates include the United Arab Emirates, Malta, and Israel.
-3. **Monthly Trend:** There was a significant spike in deaths during the early months of 2021.
+### 発見
+1. **総死亡者数:** 死亡者数が最も多い国はアメリカ合衆国、ブラジル、インドです。
+2. **ワクチン接種率:** ワクチン接種率が最も高い国にはアラブ首長国連邦、マルタ、イスラエルが含まれます。
+3. **月別トレンド:** 2021年初頭に死亡者数が大幅に増加しました。
 
-### Conclusion
-The analysis and visualizations provide valuable insights into the impact of COVID-19 across different regions and the progress of vaccination efforts. These findings can help inform public health decisions and strategies to combat the pandemic.
+### 結論
+この分析と可視化は、COVID-19がさまざまな地域に与える影響とワクチン接種の進捗状況について貴重な洞察を提供します。これらの発見は、公衆衛生の意思決定やパンデミックに対抗するための戦略策定に役立つでしょう。
 
-## Future Work
-- **Data Update:** Continuously update the data to reflect the latest COVID-19 statistics.
-- **In-depth Analysis:** Perform more detailed analysis on the correlation between vaccination rates and the reduction in death rates.
-- **Predictive Modeling:** Develop predictive models to forecast future trends in COVID-19 cases and deaths.
+## 今後の作業
+- **データの更新**: 最新のCOVID-19統計を反映するためにデータを継続的に更新する。
+- **詳細分析**: ワクチン接種率と死亡率の減少との相関についてより詳細な分析を行う。
+- **予測モデル**: COVID-19のケースと死亡者数の将来の傾向を予測するためのモデルを開発する。
